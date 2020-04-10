@@ -25,3 +25,9 @@ Problems:
 * [readability](./pset2/readability)
 * [caesar](./pset2/caesar/)
 * [substitution](./pset2/substitution/)
+
+## To-do
+
+- [ ] README for pset2
+- [ ] Notes for Week 1
+- [ ] Notes for Week 2
