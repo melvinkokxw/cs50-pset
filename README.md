@@ -26,6 +26,15 @@ Problems:
 * [caesar](./pset2/caesar/)
 * [substitution](./pset2/substitution/)
 
+## [pset3](./pset3/)
+
+Language: C
+
+Problems:
+* [plurality](./pset2/plurality)
+* [runoff](./pset2/runoff/)
+* [tideman](./pset2/tideman/)
+
 ## To-do
 
 - [ ] README for pset2
