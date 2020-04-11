@@ -38,5 +38,7 @@ Problems:
 ## To-do
 
 - [ ] README for pset2
+- [ ] README for pset3
 - [ ] Notes for Week 1
 - [ ] Notes for Week 2
+- [x] Notes for Week 3
