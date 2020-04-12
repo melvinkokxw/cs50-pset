@@ -31,9 +31,9 @@ Problems:
 Language: C
 
 Problems:
-* [plurality](./pset2/plurality)
-* [runoff](./pset2/runoff/)
-* [tideman](./pset2/tideman/)
+* [plurality](./pset3/plurality)
+* [runoff](./pset3/runoff/)
+* [tideman](./pset3/tideman/)
 
 ## To-do
 
