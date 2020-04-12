@@ -37,8 +37,14 @@ Problems:
 
 ## To-do
 
-- [ ] README for pset2
-- [ ] README for pset3
-- [ ] Notes for Week 1
-- [ ] Notes for Week 2
-- [x] Notes for Week 3
+- [x] README for pset2
+- [x] README for pset3
+    - [x] README for plurality
+    - [x] README for runoff
+    - [x] README for tideman
+        - [x] Use of merge sort
+        - [x] Use of DFS
+- [ ] Notes for week 1
+- [ ] Notes for week 2
+- [x] Notes for week 3
+    - [ ] Code for selection, insertion and merge sort (week 3)
