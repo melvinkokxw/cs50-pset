@@ -9,4 +9,4 @@ Problem set 2 consists of 3 problems:
 * [Substitution](/pset2/substitution/) (more)
     * Implement a program that implements a substitution cipher
 
-The "less" / "more" indicates the difficulty level of problem. Students are given the choice of selecting between a less/more challenging problem to complete but both have been done for more and practice learning.
+The "less" / "more" indicates the difficulty level of problem. Students are given the choice of selecting between a less/more challenging problem to complete but both have been done for more practice.

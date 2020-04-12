@@ -13,4 +13,4 @@ Problem set 1 consists of 5 problems:
 * [Credit](/pset1/credit/) (more)
     * Implement a program that prompts the user for a credit card number and then reports whether it is a valid American Express, MasterCard, or Visa card number
 
-The "less" / "more" indicates the difficulty level of problem. Students are given the choice of selecting between a less/more challenging problem to complete but both have been done for more and practice learning.
+The "less" / "more" indicates the difficulty level of problem. Students are given the choice of selecting between a less/more challenging problem to complete but both have been done for more practice.
