@@ -40,7 +40,7 @@ Charlie
 
 Other than using multiple functions to break down the problem making it easier to solve and debug, algorithms such as merge sort and depth-first search (DFS) were also needed to create the program.
 
-When sorting the pairs, I used merge sort as it has the highest efficiency among the [sorting algorithms](Notes/week3.md#sorting) we learned in week 3. Merge sort requires two functions - the main `merge_sort` function and a `merge` function.
+When sorting the pairs, I used merge sort as it has the highest efficiency among the [sorting algorithms](/Notes/week3.md#sorting) we learned in week 3. Merge sort requires two functions - the main `merge_sort` function and a `merge` function.
 
 While the algorithm was not too challenging to create in code, it was difficult to manage the value used to compare the pairs, as the value used to compare between pairs was not stored in the pairs variable itself. This resulted in lengthy, confusing variable names (e.g. `preferences[pairs_arr[pointer2].winner][pairs_arr[pointer2].loser]`). I am still looking for a solution!
 
