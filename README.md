@@ -35,6 +35,22 @@ Problems:
 * [runoff](./pset3/runoff/)
 * [tideman](./pset3/tideman/)
 
+## [pset4](./pset4/)
+
+Language: C
+
+Problems:
+* [Filter](./pset4/filter/less/) (less)
+* [Filter](./pset4/filter/more/) (more)
+* [Recover](./pset4/recover/)
+
+## [pset5](./pset5/)
+
+Language: C
+
+Problems:
+* [Speller](./pset5/speller/)
+
 ## To-do
 
 - [x] README for pset2
@@ -44,7 +60,14 @@ Problems:
     - [x] README for tideman
         - [x] Use of merge sort
         - [x] Use of DFS
+- [x] README for pset4
+    - [ ] README for filter
+    - [ ] README for recover
+- [x] README for pset5
+    - [ ] README for speller
 - [ ] Notes for week 1
 - [ ] Notes for week 2
 - [x] Notes for week 3
     - [ ] Code for selection, insertion and merge sort (week 3)
+- [ ] Notes for week 4
+- [ ] Notes for week 5
