@@ -7,13 +7,14 @@
 {% block main %}
     <form action="/register" method="post">
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required>
         </div>
         <div class="form-group">
-            <input class="form-control" name="password" placeholder="Password" type="password">
+            <input class="form-control" name="password" placeholder="Password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})$" required>
         </div>
         <div class="form-group">
-            <input class="form-control" name="confirmation" placeholder="Confirm password" type="password">
+            <input class="form-control" name="confirmation" placeholder="Confirm password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})$" required>
+            <small class="form-text text-muted">min. 1 lowercase, 1 uppercase, 1 numeric character, 1 special character, eight characters</small>
         </div>
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
