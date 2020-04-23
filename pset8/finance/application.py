@@ -236,7 +236,57 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+
+    # Handle information from POST
+    if request.method == "POST":
+
+        # Validity checker for symbol and shares
+        if not request.form.get("symbol"):
+            return apology("missing symbol")
+        elif int(request.form.get("shares")) <= 0:
+            return apology("not positive integer")
+        else:
+            results = lookup(request.form.get("symbol"))
+            if results is None:
+                return apology("symbol not found")
+
+        # Assign quantity of shares owned to variable
+        owned = db.execute("SELECT SUM(quantity) as quantity FROM transactions WHERE user_id=:id AND symbol=:symbol GROUP BY symbol",
+                           id=session["user_id"],
+                           symbol=results["symbol"])
+
+        # User doesn't own any shares
+        if not owned:
+            return apology("no shares owned")
+        elif owned[0]["quantity"] == 0:
+            return apology("no shares owned")
+
+        # Assign quantity of shares to be sold and user's cash amount to variables
+        quantity = int(request.form.get("shares"))
+        cash = db.execute("SELECT cash FROM users WHERE id = :id",
+                          id=session["user_id"])[0]["cash"]
+
+        # Trying to sell more stock than user owns
+        if quantity > owned[0]["quantity"]:
+            return apology("not enough shares owned")
+
+        # Sells shares and update 'users' and 'transactions' tables
+        else:
+            db.execute("INSERT INTO transactions (user_id, symbol, quantity, price, time) VALUES (:id, :symbol, :quantity, :price, :time)",
+                       id=session["user_id"],
+                       symbol=results["symbol"],
+                       quantity=(quantity * -1),
+                       price=usd(results["price"]),
+                       time=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            cash += quantity * results["price"]
+            db.execute("UPDATE users SET cash=:cash WHERE id=:id",
+                       cash=cash,
+                       id=session["user_id"])
+            return redirect("/")
+
+    # If visited from GET, render sell webpage
+    else:
+        return render_template("sell.html")
 
 
 def errorhandler(e):

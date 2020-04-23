@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="symbol" placeholder="e.g. AAPL">
+        </div>
+        <div class="form-group">
+            <input autofocus class="form-control" type="number" name="shares" placeholder="Quantity">
+        </div>
+        <button type="submit" class="btn btn-primary">Sell</button>
+    </form>
+{% endblock %}
