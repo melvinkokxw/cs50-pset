@@ -226,8 +226,7 @@ def register():
         # Insertion successful, log user in and redirect to index page
         else:
             flash("Registered!")
-            session["user_id"] = db.execute("SELECT id FROM users WHERE username = :username",
-                              username=request.form.get("username"))[0]["id"]
+            session["user_id"] = registered
             return redirect("/")
 
     # send user to registration page if visited via GET
