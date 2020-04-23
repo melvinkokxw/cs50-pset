@@ -113,7 +113,31 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    return apology("TODO")
+
+    # Handle information from POST
+    if request.method == "POST":
+
+        # Check if field is empty
+        if not request.form.get("symbol"):
+            return apology("missing symbol")
+
+        # Store lookup reults in dict called result
+        result = lookup(request.form.get("symbol"))
+
+        # Lookup fail, render apology
+        if result is None:
+            return apology("symbol not found")
+
+        # Lookup successful, show webpage with details
+        else:
+            return render_template("quoted.html",
+                                   name=result["name"],
+                                   price=usd(result["price"]),
+                                   symbol=result["symbol"])
+
+    # If visited by GET, show quote webpage
+    else:
+        return render_template("quote.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
