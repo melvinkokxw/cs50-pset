@@ -51,7 +51,46 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+
+    # Handle information from POST
+    if request.method == "POST":
+
+        # Validity checker for symbol and shares
+        if not request.form.get("symbol"):
+            return apology("missing symbol")
+        elif int(request.form.get("shares")) <= 0:
+            return apology("not positive integer")
+        else:
+            results = lookup(request.form.get("symbol"))
+            if results is None:
+                return apology("symbol not found")
+
+        # Assign quanity of shares to be bought and user's cash amount to variables
+        quantity = int(request.form.get("shares"))
+        cash = db.execute("SELECT cash FROM users WHERE id = :id",
+                          id=session["user_id"])[0]["cash"]
+
+        # Not enough cash, render apology
+        if quantity * results["price"] > cash:
+            return apology("not enough cash")
+
+        # Buy shares and update 'users' and 'transactions' tables
+        else:
+            cash -= quantity * results["price"]
+            db.execute("INSERT INTO transactions (user_id, symbol, quantity, price, time) VALUES (:id, :symbol, :quantity, :price, :time)",
+                       id=session["user_id"],
+                       symbol=results["symbol"],
+                       quantity=quantity,
+                       price=usd(results["price"]),
+                       time=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            db.execute("UPDATE users SET cash=:cash WHERE id=:id",
+                       cash=cash,
+                       id=session["user_id"])
+            return redirect("/")
+
+    # If visited from GET, render buy webpage
+    else:
+        return render_template("buy.html")
 
 
 @app.route("/history")
