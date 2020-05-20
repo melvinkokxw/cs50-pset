@@ -22,7 +22,7 @@ Problems:
 Language: C
 
 Problems:
-* [readability](./pset2/readability)
+* [readability](./pset2/readability/)
 * [caesar](./pset2/caesar/)
 * [substitution](./pset2/substitution/)
 
@@ -51,23 +51,31 @@ Language: C
 Problems:
 * [Speller](./pset5/speller/)
 
-## To-do
+## [pset6](./pset6/)
 
-- [x] README for pset2
-- [x] README for pset3
-    - [x] README for plurality
-    - [x] README for runoff
-    - [x] README for tideman
-        - [x] Use of merge sort
-        - [x] Use of DFS
-- [x] README for pset4
-    - [ ] README for filter
-    - [ ] README for recover
-- [x] README for pset5
-    - [ ] README for speller
-- [ ] Notes for week 1
-- [ ] Notes for week 2
-- [x] Notes for week 3
-    - [ ] Code for selection, insertion and merge sort (week 3)
-- [ ] Notes for week 4
-- [ ] Notes for week 5
+Language: Python
+
+Problems:
+* [hello](./pset6/hello/)
+* [mario (less)](./pset6/mario/less/)
+* [mario (more)](./pset6/mario/more/)
+* [cash (less)](./pset6/cash/)
+* [credit (more)](./pset6/credit/)
+* [readability](./pset6/readability/)
+* [DNA](./pset6/dna/)
+
+## [pset7](./pset7/)
+
+Language: Python
+
+Problems:
+* [movies](./pset7/movies/)
+* [houses](./pset7/houses/)
+
+## [pset8](./pset8/)
+
+Language: Python
+
+Problems:
+* [homepage](./pset8/homepage/)
+* [finance](./pset8/finance/)
