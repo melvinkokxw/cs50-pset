@@ -49,10 +49,10 @@ class PokemonViewController: UIViewController {
 
                     for typeEntry in result.types {
                         if typeEntry.slot == 1 {
-                            self.type1Label.text = typeEntry.type.name
+                            self.type1Label.text = self.capitalize(text: typeEntry.type.name)
                         }
                         else if typeEntry.slot == 2 {
-                            self.type2Label.text = typeEntry.type.name
+                            self.type2Label.text = self.capitalize(text: typeEntry.type.name)
                         }
                     }
                     
