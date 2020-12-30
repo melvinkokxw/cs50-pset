@@ -13,6 +13,7 @@ struct PokemonResult: Codable {
     let id: Int
     let name: String
     let types: [PokemonTypeEntry]
+    let sprites: PokemonSprites
 }
 
 struct PokemonTypeEntry: Codable {
@@ -22,4 +23,8 @@ struct PokemonTypeEntry: Codable {
 
 struct PokemonType: Codable {
     let name: String
+}
+
+struct PokemonSprites: Codable {
+    let front_default: URL
 }

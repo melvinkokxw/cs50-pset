@@ -9,6 +9,7 @@ class PokemonViewController: UIViewController {
     @IBOutlet var type1Label: UILabel!
     @IBOutlet var type2Label: UILabel!
     @IBOutlet var catchButton: UIButton!
+    @IBOutlet var spriteImage: UIImageView!
     
     @IBAction func toggleCatch() {
         caught = !caught
@@ -52,6 +53,16 @@ class PokemonViewController: UIViewController {
                             self.type2Label.text = typeEntry.type.name
                         }
                     }
+                    
+                    if let spriteData = try? Data(contentsOf: result.sprites.front_default) {
+                        if let image = UIImage(data: spriteData) {
+                            DispatchQueue.main.async {
+                                self.spriteImage.image = image
+                            }
+                        }
+                    }
+                    
+                    
                     self.caught = UserDefaults.standard.bool(forKey: self.nameLabel.text!)
                     self.catchButton.setTitle(self.caught ? "Release" : "Catch", for: UIControl.State.normal)
                 }
