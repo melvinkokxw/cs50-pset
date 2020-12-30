@@ -2,11 +2,19 @@ import UIKit
 
 class PokemonViewController: UIViewController {
     var url: String!
+    var caught: Bool = false
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var type1Label: UILabel!
     @IBOutlet var type2Label: UILabel!
+    @IBOutlet var catchButton: UIButton!
+    
+    @IBAction func toggleCatch() {
+        caught = !caught
+        UserDefaults.standard.set(caught, forKey: nameLabel.text!)
+        catchButton.setTitle(caught ? "Release" : "Catch", for: UIControl.State.normal)
+    }
 
     func capitalize(text: String) -> String {
         return text.prefix(1).uppercased() + text.dropFirst()
@@ -44,6 +52,8 @@ class PokemonViewController: UIViewController {
                             self.type2Label.text = typeEntry.type.name
                         }
                     }
+                    self.caught = UserDefaults.standard.bool(forKey: self.nameLabel.text!)
+                    self.catchButton.setTitle(self.caught ? "Release" : "Catch", for: UIControl.State.normal)
                 }
             }
             catch let error {

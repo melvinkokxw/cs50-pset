@@ -1,7 +1,24 @@
 import UIKit
 
-class PokemonListViewController: UITableViewController {
+class PokemonListViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet var searchBar: UISearchBar!
+    
     var pokemon: [PokemonListResult] = []
+    var searchResults: [PokemonListResult] = []
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            searchResults = pokemon
+        }
+        else {
+            searchResults = pokemon.filter { (item: PokemonListResult) -> Bool in
+                print("\(item.name)")
+                return item.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+        tableView.reloadData()
+    }
     
     func capitalize(text: String) -> String {
         return text.prefix(1).uppercased() + text.dropFirst()
@@ -9,6 +26,7 @@ class PokemonListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151") else {
             return
@@ -22,6 +40,7 @@ class PokemonListViewController: UITableViewController {
             do {
                 let entries = try JSONDecoder().decode(PokemonListResults.self, from: data)
                 self.pokemon = entries.results
+                self.searchResults = self.pokemon
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -37,12 +56,12 @@ class PokemonListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemon.count
+        return searchResults.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath)
-        cell.textLabel?.text = capitalize(text: pokemon[indexPath.row].name)
+        cell.textLabel?.text = capitalize(text: searchResults[indexPath.row].name)
         return cell
     }
     
@@ -50,7 +69,9 @@ class PokemonListViewController: UITableViewController {
         if segue.identifier == "ShowPokemonSegue",
                 let destination = segue.destination as? PokemonViewController,
                 let index = tableView.indexPathForSelectedRow?.row {
-            destination.url = pokemon[index].url
+            destination.url = searchResults[index].url
         }
     }
+    
+    
 }
