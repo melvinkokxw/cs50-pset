@@ -30,6 +30,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="poison" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8D-6v-6nq">
+                                <rect key="frame" x="20" y="555" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="grass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvr-bs-76Q">
+                                <rect key="frame" x="20" y="591" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1ge-gg-sSO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -38,6 +52,8 @@
                     <connections>
                         <outlet property="nameLabel" destination="tqA-N6-bEZ" id="Dtc-hy-ppG"/>
                         <outlet property="numberLabel" destination="e3t-IQ-zHw" id="z8z-bj-gzs"/>
+                        <outlet property="type1Label" destination="e8D-6v-6nq" id="dLu-wp-FZD"/>
+                        <outlet property="type2Label" destination="cvr-bs-76Q" id="YK8-9P-nt5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s02-s2-42X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
