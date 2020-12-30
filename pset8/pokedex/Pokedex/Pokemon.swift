@@ -6,7 +6,7 @@ struct PokemonListResults: Codable {
 
 struct PokemonListResult: Codable {
     let name: String
-    let url: String
+    let url: URL
 }
 
 struct PokemonResult: Codable {
@@ -27,4 +27,17 @@ struct PokemonType: Codable {
 
 struct PokemonSprites: Codable {
     let front_default: URL
+}
+
+struct PokemonSpeciesResult: Codable {
+    let flavor_text_entries: [PokemonFlavorText]
+}
+
+struct PokemonFlavorText: Codable {
+    let flavor_text: String
+    let language: PokemonLanguage
+}
+
+struct PokemonLanguage: Codable {
+    let name: String
 }

@@ -1,7 +1,7 @@
 import UIKit
 
 class PokemonViewController: UIViewController {
-    var url: String!
+    var url: URL!
     var caught: Bool = false
 
     @IBOutlet var nameLabel: UILabel!
@@ -9,7 +9,8 @@ class PokemonViewController: UIViewController {
     @IBOutlet var type1Label: UILabel!
     @IBOutlet var type2Label: UILabel!
     @IBOutlet var catchButton: UIButton!
-    @IBOutlet var spriteImage: UIImageView!
+    @IBOutlet var spriteImageView: UIImageView!
+    @IBOutlet var flavorTextView: UITextView!
     
     @IBAction func toggleCatch() {
         caught = !caught
@@ -30,10 +31,11 @@ class PokemonViewController: UIViewController {
         type2Label.text = ""
 
         loadPokemon()
+        loadFlavourText()
     }
 
     func loadPokemon() {
-        URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let data = data else {
                 return
             }
@@ -56,15 +58,39 @@ class PokemonViewController: UIViewController {
                     
                     if let spriteData = try? Data(contentsOf: result.sprites.front_default) {
                         if let image = UIImage(data: spriteData) {
-                            DispatchQueue.main.async {
-                                self.spriteImage.image = image
-                            }
+                            self.spriteImageView.image = image
                         }
                     }
                     
-                    
                     self.caught = UserDefaults.standard.bool(forKey: self.nameLabel.text!)
                     self.catchButton.setTitle(self.caught ? "Release" : "Catch", for: UIControl.State.normal)
+                }
+            }
+            catch let error {
+                print(error)
+            }
+        }.resume()
+    }
+    
+    func loadFlavourText() {
+        let id = url.lastPathComponent
+        let speciesURL = URL(string: "https://pokeapi.co/api/v2/pokemon-species/" + id)
+        URLSession.shared.dataTask(with: speciesURL!) { (data, response, error) in
+            guard let data = data else {
+                return
+            }
+
+            do {
+                let result = try JSONDecoder().decode(PokemonSpeciesResult.self, from: data)
+                DispatchQueue.main.async {
+                    let flavor_text_entries = result.flavor_text_entries
+                    for entry in flavor_text_entries {
+                        if entry.language.name == "en" {
+                            self.flavorTextView.text = entry.flavor_text.replacingOccurrences(of: "\\s", with: " ", options: .regularExpression)
+                            self.flavorTextView.isEditable = false
+                            break
+                        }
+                    }
                 }
             }
             catch let error {
